@@ -1,12 +1,16 @@
 package next.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 
+@Entity
 public class User {
 	public static final GuestUser GUEST_USER = new GuestUser();
 	
+	@Id
 	@Size(min = 3, max = 12)
 	private String userId;
 	
