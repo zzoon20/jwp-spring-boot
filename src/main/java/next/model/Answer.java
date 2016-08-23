@@ -74,6 +74,10 @@ public class Answer {
 		return user.isSameUser(this.writer);
 	}
 	
+	public boolean canDelete(User user) {
+		return isSameUser(user);
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

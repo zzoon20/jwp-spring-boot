@@ -40,7 +40,7 @@ public class QnaServiceTest extends IntegrationTest{
 	public void test_다른사람이쓴_댓글이_존재() throws Exception {
 		Question question = new Question(userRepository.findOne("admin"), "제목하나", "글하나");
 		questionRepository.save(question);
-		answerRepository.save(new Answer(userRepository.findOne("user1"), "의견하나", question));
+		answerRepository.save(new Answer(userRepository.findOne("user1"), "의견하나", questionRepository.findOne(1L)));
 		
 		qnaService.deleteQuestion(1, userRepository.findOne("admin"));
 	}

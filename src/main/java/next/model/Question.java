@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 
+import next.CannotOperateException;
+
 @Entity
 public class Question {
 
@@ -135,6 +137,23 @@ public class Question {
 		Question other = (Question) obj;
 		if (questionId != other.questionId)
 			return false;
+		return true;
+	}
+
+	public boolean canDelete(User user) throws CannotOperateException {
+		if (!isSameUser(user)) {
+			throw new CannotOperateException("다른 사용자가 쓴 글을 삭제할 수 없습니다.");
+		}
+		
+		if(answers == null) {
+			return true;
+		}
+		
+		for (Answer answer : answers) {
+			if (!answer.canDelete(user)) {
+				throw new CannotOperateException("다른 사용자가 추가한 댓글이 존재해 삭제할 수 없습니다.");
+			}
+		}
 		return true;
 	}
 }
