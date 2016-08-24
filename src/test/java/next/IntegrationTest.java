@@ -1,4 +1,4 @@
-package core.test;
+package next;
 
 import javax.transaction.Transactional;
 

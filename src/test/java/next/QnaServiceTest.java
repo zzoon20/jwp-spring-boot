@@ -1,4 +1,4 @@
-package core.test;
+package next;
 
 import org.junit.Before;
 import org.junit.Test;

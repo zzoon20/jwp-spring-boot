@@ -1,4 +1,4 @@
-package core.test;
+package next;
 
 import java.util.List;
 
